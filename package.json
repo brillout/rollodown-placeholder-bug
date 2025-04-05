@@ -17,5 +17,10 @@
     "vike-server": "^1.0.13",
     "vike-solid": "^0.7.9",
     "vite": "^6.2.5"
+  },
+  "pnpm": {
+    "overrides": {
+      "rollup": "4.38.0"
+    }
   }
 }
