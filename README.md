@@ -1,78 +1,34 @@
-# template-vike-solid-daisyui-hono
-
-### 📚 Template stack
-- **Vike**
-- **Solid**
-- **TypeScript**
-
-<a href="https://github.com/tandpfun/skill-icons">
-  <img align="center" src="https://skills-icons.vercel.app/api/icons?i=vike,solid,ts" />
-</a>
-
-### ⬇️ Clone
-```sh
-git clone https://github.com/templates-ecosystem/template-vike-solid-daisyui-hono.git
+```bash
+pnpm install
+pnpm run build
 ```
 
-### ⚙️ Install
-```sh
-yarn
+Error is thrown:
+
+```bash
+Error during build:
+The "paths[1]" argument must be of type string. Received undefined
+    at resolve (node:path:1101:7)
+    at writeOutputFile (file:///home/rom/tmp/template-vike-solid-daisyui-hono/node_modules/.pnpm/rollup@4.39.0/node_modules/rollup/dist/es/shared/node-entry.js:23189:22)
+    at file:///home/rom/tmp/template-vike-solid-daisyui-hono/node_modules/.pnpm/rollup@4.39.0/node_modules/rollup/dist/es/shared/node-entry.js:23139:104
+    at Queue.work (file:///home/rom/tmp/template-vike-solid-daisyui-hono/node_modules/.pnpm/rollup@4.39.0/node_modules/rollup/dist/es/shared/node-entry.js:22266:38)
+    at file:///home/rom/tmp/template-vike-solid-daisyui-hono/node_modules/.pnpm/rollup@4.39.0/node_modules/rollup/dist/es/shared/node-entry.js:22255:18
+    at new Promise (<anonymous>)
+    at Queue.run (file:///home/rom/tmp/template-vike-solid-daisyui-hono/node_modules/.pnpm/rollup@4.39.0/node_modules/rollup/dist/es/shared/node-entry.js:22253:16)
+    at file:///home/rom/tmp/template-vike-solid-daisyui-hono/node_modules/.pnpm/rollup@4.39.0/node_modules/rollup/dist/es/shared/node-entry.js:23139:94
+    at Array.map (<anonymous>)
+    at file:///home/rom/tmp/template-vike-solid-daisyui-hono/node_modules/.pnpm/rollup@4.39.0/node_modules/rollup/dist/es/shared/node-entry.js:23139:56
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at catchUnfinishedHookActions (file:///home/rom/tmp/template-vike-solid-daisyui-hono/node_modules/.pnpm/rollup@4.39.0/node_modules/rollup/dist/es/shared/node-entry.js:22508:16)
+    at buildEnvironment (file:///home/rom/tmp/template-vike-solid-daisyui-hono/node_modules/.pnpm/vite@6.2.5_@types+node@22.14.0/node_modules/vite/dist/node/chunks/dep-Pj_jxEzN.js:51500:16)
+    at Object.buildApp (file:///home/rom/tmp/template-vike-solid-daisyui-hono/node_modules/.pnpm/vike@0.4.228_vite@6.2.5_@types+node@22.14.0_/node_modules/vike/dist/esm/node/plugin/plugins/build/pluginBuildApp.js:23:29)
+    at Module.build (file:///home/rom/tmp/template-vike-solid-daisyui-hono/node_modules/.pnpm/vike@0.4.228_vite@6.2.5_@types+node@22.14.0_/node_modules/vike/dist/esm/node/api/build.js:22:9)
+    at cmdBuild (file:///home/rom/tmp/template-vike-solid-daisyui-hono/node_modules/.pnpm/vike@0.4.228_vite@6.2.5_@types+node@22.14.0_/node_modules/vike/dist/esm/node/cli/entry.js:51:9)
+    at cli (file:///home/rom/tmp/template-vike-solid-daisyui-hono/node_modules/.pnpm/vike@0.4.228_vite@6.2.5_@types+node@22.14.0_/node_modules/vike/dist/esm/node/cli/entry.js:14:9) {
+  code: 'ERR_INVALID_ARG_TYPE'
+}
+ ELIFECYCLE  Command failed with exit code 1.
 ```
 
-### 🚀 Start
-```sh
-yarn dev
-```
-
-### ▲ Deploy on Vercel
-- Create `/api/ssr.js`
-  ```ts
-  import app from '../dist/server/index.js'
-
-  export const GET = app.fetch
-  export const POST = app.fetch
-  ```
-
-- Update `/pages/+config.ts`
-  ```diff
-  import type { Config } from 'vike/types'
-  import vikeServer from 'vike-server/config'
-  import vikeSolid from 'vike-solid/config'
-
-  export default {
-    ...
-    extends: [
-      vikeSolid,
-      vikeServer
-    ],
-  -  server: 'server/index.ts'
-  +  server: process.env.NODE_ENV === 'production' ? 'server/index.ts' : 'server/entry.node.ts'
-  } satisfies Config
-  ```
-
-- Create `/server/entry.node.ts`
-  ```ts
-  import { serve } from 'vike-server/hono/serve'
-
-  import app from './index'
-
-  const port = +(process.env.PORT || 3000)
-
-  serve(app, { port })
-  ```
-
-- Update `/server/index.ts`
-  ```diff
-  import { Hono } from 'hono'
-  import { apply } from 'vike-server/hono'
-  -import { serve } from 'vike-server/hono/serve'
-
-  const app = new Hono()
-
-  apply(app)
-
-  -const port = +(process.env.PORT || 3000)
-
-  -serve(app, { port })
-  +export default app
-  ```
+`rollup@4.39.0` => error  
+`rollup@4.38.0` => no error  
