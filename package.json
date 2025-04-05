@@ -1,15 +1,9 @@
 {
-  "name": "template-vike-solid-daisyui-hono",
-  "version": "0.1.0",
-  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vike dev",
     "build": "vike build",
-    "prod": "NODE_ENV=production node dist/server/index.mjs",
-    "serve": "yarn build && yarn prod",
-    "lint": "eslint src/**/*.{ts,tsx} *.ts",
-    "od": "yarn outdated"
+    "prod": "NODE_ENV=production node dist/server/index.mjs"
   },
   "dependencies": {
     "hono": "^4.7.5",
@@ -23,11 +17,5 @@
     "vike-server": "^1.0.13",
     "vike-solid": "^0.7.9",
     "vite": "^6.2.5"
-  },
-  "engines": {
-    "node": ">=20"
-  },
-  "files": [
-    "dist"
-  ]
+  }
 }
